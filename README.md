@@ -65,7 +65,7 @@ Nine model variants were trained, varying:
 - Optimizer: RMSprop vs Adam
 - Training epochs: 10 / 30 / 50
 
-Predictions from each experiment were saved as versioned CSV files (`predictions_06.csv` through `predictions_09.csv`).
+Predictions from each experiment were saved as versioned CSV files.
 
 ### 5. Inference
 Final predictions on the test set (64,774 clips) are produced by `model.predict()` and decoded back to label strings using `np.argmax` over each output head.
@@ -78,11 +78,6 @@ Final predictions on the test set (64,774 clips) are produced by `model.predict(
 |---|---|
 | Audio processing | `librosa` |
 | Deep learning | `TensorFlow`, `tf.keras` (functional API) |
-| Neural net layers | `Conv1D`, `BatchNormalization`, `MaxPooling1D`, `Dense`, `Dropout` |
-| Optimizers | `RMSprop` (legacy), `Adam` |
-| Data manipulation | `numpy`, `pandas` |
-| Visualisation | `matplotlib` |
-| File I/O | `os`, `shutil` |
 
 ---
 
@@ -111,28 +106,3 @@ Drone model classification consistently achieved >99.8% accuracy across all expe
 
 ---
 
-## How to Run
-
-```bash
-# Clone the repo
-git clone https://github.com/vanshnarang13/Drone-Audio-Classification.git
-cd Drone-Audio-Classification
-
-# Install dependencies
-pip install numpy pandas matplotlib librosa tensorflow
-
-# Launch the notebook
-jupyter notebook drone_audio_classification.ipynb
-```
-
-**Note:** The notebook expects training/validation/test audio files organized as:
-```
-aries_project/
-├── training_dataset/   # .wav files
-├── validation_dataset/ # .wav files
-└── test/
-    ├── mic1/           # .wav files
-    └── mic2/           # .wav files
-```
-
-The `predictions.csv` file in this repo contains sample inference output from the final model.
